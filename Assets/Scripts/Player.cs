@@ -6,17 +6,19 @@ public class Player : MonoBehaviour
 {
     private Vector2 Inputvetor;
     private bool IsLeft;
+    private bool IsRight;
 
     [Range(0f,10f)][SerializeField]private float speed = 5f;
 
     Rigidbody2D rb;
     SpriteRenderer rbSprite;
-    
+    Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rbSprite = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -28,23 +30,22 @@ public class Player : MonoBehaviour
         if(Inputvetor.x  == -1)
         {
             IsLeft = true;
+            IsRight = false;
         }
-        else
+        if(Inputvetor.x == 1)
         {
+            IsRight = true;
             IsLeft = false;
         }
+
     }
 
     private void FixedUpdate()
     {
-        if(IsLeft)
-        {
-            rbSprite.flipX = true;
-        }
-        else
-        {
-            rbSprite.flipX= false;
-        }
+        if(IsLeft){rbSprite.flipX = true;}
+        if (IsRight) { rbSprite.flipX=false;}
+        animator.SetBool("IsMove", Inputvetor.magnitude > 0);
+
 
         Vector2 moveAmount = Inputvetor.normalized * speed * Time.fixedDeltaTime;
 
