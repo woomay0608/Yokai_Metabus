@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
@@ -17,7 +20,18 @@ public class UiManager : MonoBehaviour
 
     private void Awake()
     {
-        if(GameObject ==  null)
+
+        if(uiManager == null)
+        {
+            uiManager = this;
+            DontDestroyOnLoad(uiManager);
+        }
+        else
+        {
+            Destroy(uiManager);
+        }
+     
+        if (GameObject ==  null)
         {
             GameObject = GameObject.Find("TalkObject");
         }
@@ -29,16 +43,19 @@ public class UiManager : MonoBehaviour
     }
     public void SetAct()
     {
+        if(gameObject != null)
         GameObject.SetActive(true);
     }
     public void SetFalse()
     {
-        GameObject.SetActive(false);
+        if (gameObject != null)
+            GameObject.SetActive(false);
     }
 
     public void SetIma(Sprite sprite)
     {
-        image.sprite = sprite;
+        if (image != null)
+            image.sprite = sprite;
     }
 
     private IEnumerator showtext(List<string> list)
@@ -51,5 +68,13 @@ public class UiManager : MonoBehaviour
         }
     }
 
+    internal void OnScore(int v)
+    {
+        throw new NotImplementedException();
+    }
 
+    internal void OnRestart()
+    {
+        throw new NotImplementedException();
+    }
 }
