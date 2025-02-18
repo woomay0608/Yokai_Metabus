@@ -16,11 +16,11 @@ public class Obstacle : MonoBehaviour
 
     public float WidthPadding = 4f;
 
-    GameManager gameManager;
+    FlapyGameManager gameManager;
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = FlapyGameManager.FlapyGameManagers;
     }
     public Vector3 SetRandomPlace(Vector3 LastPosition, int ObstacleCount)
     {
@@ -41,7 +41,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Player player = collision.gameObject.GetComponent<Player>();
+        flapyPlayer player = collision.gameObject.GetComponent<flapyPlayer>();
 
         if (player != null) { gameManager.AddScore(1); }
     }

@@ -10,48 +10,64 @@ public class GameManager : MonoBehaviour
     static GameManager gameManager;
 
     UiManager uiManager;
+    
 
     public static GameManager instance { get { return gameManager; } }
     public static UiManager UiManager { get { return UiManager; } }
 
 
-    private int CurrentScore;
+    private IMiniGamable currentMiniGame;
+
 
     private void Awake()
     {
         if (instance == null)
         {
             gameManager = this;
-            DontDestroyOnLoad(uiManager);
+            DontDestroyOnLoad(gameManager);
         }
         else
         {
             Destroy(gameManager);
         }
+        
         uiManager = FindAnyObjectByType<UiManager>();
     }
 
 
     private void Start()
     {
-        uiManager.OnScore(0);
+    
+        
     }
-    public void Gameover()
+
+    public void SetMini(IMiniGamable mini)
     {
-        uiManager.OnRestart();
+        currentMiniGame = mini;
     }
-
-    public void RestartGame()
+  
+    public void StartMini()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if(currentMiniGame != null)
+        {
+            currentMiniGame.GameStart();
+        }
     }
 
-    public void AddScore(int i)
+    public void EndGame()
     {
-        CurrentScore += i;
-        uiManager.OnScore(CurrentScore);
+        if (currentMiniGame != null)
+        {
+            currentMiniGame.GameEnd();
+        }
     }
 
-
+    public void Return()
+    {
+        if (currentMiniGame != null)
+        {
+            currentMiniGame.ReturnHome();
+        }
+    }
 
 }

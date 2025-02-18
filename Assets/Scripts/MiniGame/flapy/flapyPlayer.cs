@@ -27,7 +27,7 @@ public class flapyPlayer : MonoBehaviour
         Anime = GetComponentInChildren<Animator>();
         _Rigid = GetComponent<Rigidbody2D>();
 
-
+        
         if (Anime == null)
             Debug.LogError("애니메이터 없다");
 
@@ -43,10 +43,7 @@ public class flapyPlayer : MonoBehaviour
         {
             if (DeathCount <= 0f)
             {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                {
-                    gameManager.RestartGame();
-                }
+             
             }
             else
             {
@@ -92,7 +89,7 @@ public class flapyPlayer : MonoBehaviour
         DeathCount = 1f;
 
         Anime.SetInteger("IsDie", 1);
-        gameManager.Gameover();
+        gameManager.EndGame();
     }
 
 }

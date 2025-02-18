@@ -24,6 +24,7 @@ public class UiManager : MonoBehaviour
         if(uiManager == null)
         {
             uiManager = this;
+            DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(uiManager);
         }
         else
@@ -68,13 +69,5 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    internal void OnScore(int v)
-    {
-        throw new NotImplementedException();
-    }
 
-    internal void OnRestart()
-    {
-        throw new NotImplementedException();
-    }
 }
