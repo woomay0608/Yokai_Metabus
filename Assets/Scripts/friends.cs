@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class friends : MonoBehaviour
 {
@@ -13,44 +14,53 @@ public class friends : MonoBehaviour
 
     List<string> talk = new List<string>();
 
-
+    private bool IsColliding = false;
+    private bool IsMini =false;
     UiManager uiManager;
     // Start is called before the first frame update
     void Start()
     {
         uiManager = FindAnyObjectByType<UiManager>();
+        talkText.gameObject.SetActive(false);
     }
     //
 
 
-    //충돌을 감지해주는 메소드
-    //Collistion/ Trigger
-    //enter , stay, Exit
-
-    private void OnCollisionStay2D(Collision2D collision)
+    private void Update()
     {
-        talkText.gameObject.SetActive(true);
-        Debug.Log("안녕");
-
-        SetText();
-
-        if (Input.GetKeyDown(KeyCode.F))
+        if(IsColliding && Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("nurum");
             uiManager.SetAct();
             uiManager.SetIma(Face);
             uiManager.StartCorutine(talk);
+            IsMini = true;
 
         }
+        if(IsMini && Input.GetKeyDown(KeyCode.S))
+        {
+            SceneManager.LoadScene("MiniGame");
+        }
     }
- 
 
-    private void OnCollisionExit2D(Collision2D collision)
+    //충돌을 감지해주는 메소드
+    //Collistion/ Trigger
+    //enter , stay, Exit
+    private void OnTriggerExit2D(Collider2D collision)
     {
         talkText.gameObject.SetActive(false);
-        uiManager.SetFalse();
-        Debug.Log("안녕ㅈㅈ");
+        IsColliding = false;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IsColliding = true;
+        talkText.gameObject.SetActive(true);
+        Debug.Log("안녕");
+
+        SetText();
+ 
+    }
+ 
 
 
     private void SetText()

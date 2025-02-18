@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameManager);
+            //
+            Destroy(gameManager.gameObject);
         }
         
         uiManager = FindAnyObjectByType<UiManager>();
@@ -39,6 +40,11 @@ public class GameManager : MonoBehaviour
     {
     
         
+    }
+
+    private void Update()
+    {
+       
     }
 
     public void SetMini(IMiniGamable mini)

@@ -955,7 +955,7 @@ MonoBehaviour:
   FlapForce: 6
   ForwardForce: 3
   IsDead: 0
-  GodMode: 0
+  GodMode: 1
 --- !u!1001 &200733902
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -24,12 +24,10 @@ public class UiManager : MonoBehaviour
         if(uiManager == null)
         {
             uiManager = this;
-            DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(uiManager);
         }
         else
         {
-            Destroy(uiManager);
+            Destroy(uiManager.gameObject);
         }
      
         if (GameObject ==  null)
@@ -61,7 +59,7 @@ public class UiManager : MonoBehaviour
 
     private IEnumerator showtext(List<string> list)
     {
-
+     
         for (int i = 0; i < list.Count; i++)  
         {
             Talk.text = list[i];

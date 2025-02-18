@@ -64,6 +64,7 @@ public class FlapyGameManager : MonoBehaviour, IMiniGamable
     }
     public void ReturnHome()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainScene");
     }
 }

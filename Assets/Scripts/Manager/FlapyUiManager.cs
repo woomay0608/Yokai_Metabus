@@ -12,6 +12,8 @@ public class FlapyUiManager : MonoBehaviour
     public Button StartButton;
     public Button ReStart;
 
+    private int Scoreint;
+
 
     void Start()
     {
@@ -29,9 +31,9 @@ public class FlapyUiManager : MonoBehaviour
 
     public void ScoreSet(int i)
     {
-        int ii = 0;
-        ii += i;
-        Score.text = ii.ToString();
+
+        Scoreint += i;
+        Score.text = Scoreint.ToString();
     }
 
     public void SetDonw()
