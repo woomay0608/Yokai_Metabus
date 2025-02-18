@@ -13,13 +13,26 @@ public class FlapyGameManager : MonoBehaviour, IMiniGamable
     GameManager gameManager;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        gameManager = GameManager.instance;
+
+        if (FlapyGameManagers == null)
+        {
+            FlapyGameManagers = this;
+        }
+        else
+        {
+            Destroy(FlapyGameManagers.gameObject);
+        }
+        FlapyUiManager = FindAnyObjectByType<FlapyUiManager>();
+    }
     void Start()
     {
         
-        gameManager = GameManager.instance;
+   
 
-        FlapyGameManagers = this;
-        FlapyUiManager = FindAnyObjectByType<FlapyUiManager>();
 
 
         Time.timeScale = 0f;

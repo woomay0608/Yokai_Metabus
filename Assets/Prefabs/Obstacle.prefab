@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e40b420ff003a34e9a632744b6148a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HighPostiony: 2
+  HighPostiony: 1
   LowPostiony: -2
   HoleSizemin: 8
   HoleSizemax: 9
