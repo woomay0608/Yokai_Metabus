@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     //게임 최고 기록 저장할 곳
     private int FlapyBestScore = 0;
 
-    private List<int> FlapyList = new List<int>();
+    public List<int> FlapyList = new List<int>();
     public int flapyBestScore { get => FlapyBestScore; set { flapyBestScore = value; } }
 
     private const string FlapyBestKey = "FlapyBestKey";
@@ -49,8 +49,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-       
 
+        uiManager.ReaderBoardSet();
 
     }
 
@@ -93,10 +93,11 @@ public class GameManager : MonoBehaviour
     {
        
         FlapyList.Add(currentscore);
+        FlapyList.Sort();
+        FlapyList.Reverse();
 
-        if(FlapyList.Count > 5)
+        if (FlapyList.Count > 5)
         {
-            FlapyList.Sort();
             FlapyList.RemoveAt(5);
         }
         
@@ -105,5 +106,11 @@ public class GameManager : MonoBehaviour
             BestScore = currentscore;
             PlayerPrefs.SetInt(FlapyBestKey, BestScore);
         }
+
+        foreach(int i in FlapyList)
+        { Debug.Log(i); }
+
+
+        uiManager.ReaderBoardSet();
     }
 }
