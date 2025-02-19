@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Talk;
     
     [SerializeField] private GameObject TalkObject;
+    [SerializeField] private GameObject ColorObject;
     [SerializeField] private Image Image;
     public static UiManager Instace;
 
@@ -20,8 +21,6 @@ public class UiManager : MonoBehaviour
 
     private void Awake()
     {
-
-      
 
         if(Instace == null)
         {
@@ -31,38 +30,40 @@ public class UiManager : MonoBehaviour
         else
         {
             Destroy(Instace.gameObject);
-           
+            return;
         }
      
         if (TalkObject ==  null)
         {
             TalkObject = GameObject.Find("TalkObject");
         }
+        if (ColorObject == null)
+        {
+            ColorObject = GameObject.Find("ColorChange");
+        }
     }
 
     private void Start()
     {
-
-        
-        
-
-  
-        
     }
 
     public  void StartCorutine(List<string> strings)
     {
         StartCoroutine(showtext(strings));
     }
-    public void SetAct()
+    public void SetAct(int i)
     {
-        if(TalkObject != null)
+        if(TalkObject != null && i == 1)
             TalkObject.SetActive(true);
+        if(i == 2 && ColorObject != null)
+            ColorObject.SetActive(true);
     }
-    public void SetFalse()
+    public void SetFalse(int i)
     {
-        if (TalkObject != null)
+        if (TalkObject != null && i == 1)
             TalkObject.SetActive(false);
+        if (i == 2 && ColorObject != null)
+            ColorObject.SetActive(false);
     }
 
 
