@@ -363,7 +363,7 @@ RectTransform:
   m_Father: {fileID: 1206898228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8979,7 +8979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &448525581
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17993,7 +17993,7 @@ RectTransform:
   m_Father: {fileID: 1354116298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18191,6 +18191,7 @@ MonoBehaviour:
   RedSlider: {fileID: 1644996542}
   GreenSlider: {fileID: 870624611}
   BlueSlider: {fileID: 1426738639}
+  FlapyList: 
   SaZin: {fileID: 732158513}
   Player: {fileID: 208550604}
   reader: {fileID: 1537420194}
@@ -18529,7 +18530,7 @@ RectTransform:
   m_Father: {fileID: 1983477849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18727,7 +18728,7 @@ RectTransform:
   m_Father: {fileID: 1642184074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18979,7 +18980,7 @@ RectTransform:
   m_Father: {fileID: 1343876242}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19240,7 +19241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Flapy: {fileID: 1518203055}
-  FlapyList: 
 --- !u!1 &1562080293
 GameObject:
   m_ObjectHideFlags: 0
@@ -20681,7 +20681,7 @@ RectTransform:
   m_Father: {fileID: 18169113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
