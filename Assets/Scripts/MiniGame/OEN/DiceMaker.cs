@@ -5,8 +5,8 @@ using UnityEngine;
 public class DiceMaker : MonoBehaviour
 {
 
-    [SerializeField]private GameObject Dice;
-    private GameObject game;
+    [SerializeField]private Dice Dice;
+    private Dice game;
 
     private int Summon = 0;
     // Start is called before the first frame update
@@ -43,6 +43,7 @@ public class DiceMaker : MonoBehaviour
         for (int i = Summon; i <1+ Summon; i++) 
         {
             game = Instantiate(Dice);
+            OENGameManager.Instace.DiceList.Add(game);
             game.transform.position = new Vector3(i-3, 0.5f, 0f);
            
         }

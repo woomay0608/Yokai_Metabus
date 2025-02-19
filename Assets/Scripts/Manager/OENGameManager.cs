@@ -11,15 +11,22 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
 
     public int AllNumber = 0;
 
+    [SerializeField] private Tong Tong;
+
+    public List<Dice> DiceList = new List<Dice>();
     public static OENGameManager Instace;
 
     private void Awake()
     {
         if (Instace == null) { Instace = this; }
+        //GameManager.instance.SetMini(this);
+
     }
     void Start()
     {
-        
+        Tong = FindAnyObjectByType<Tong>();
+
+        StartCorou();
 
     }
     public void GameEnd()
@@ -29,7 +36,10 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
 
     public void GameStart()
     {
-        throw new System.NotImplementedException();
+        
+
+
+
     }
 
     public void ReturnHome()
@@ -45,4 +55,27 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
     {
         
     }
+
+    public void Diceon()
+    {
+        foreach (Dice d in DiceList) 
+        {
+            d.DiceSelect();
+            d.gameObject.SetActive(true);
+        }
+    }
+
+
+    private IEnumerator DiceGo()
+    {
+        Tong.StartCor();
+        yield return new WaitForSeconds(3);
+        Diceon();
+    }
+
+    public void StartCorou()
+    {
+        StartCoroutine(DiceGo());
+    }
+
 }

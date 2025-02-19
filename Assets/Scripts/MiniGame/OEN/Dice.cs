@@ -7,9 +7,15 @@ public class Dice : MonoBehaviour
     [SerializeField]private Sprite[] DiceNumber;
 
     private SpriteRenderer Renderer;
-    void Start()
+
+
+    private void Awake()
     {
         Renderer = GetComponent<SpriteRenderer>();
+    }
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
@@ -18,7 +24,7 @@ public class Dice : MonoBehaviour
         
     }
 
-    private void DiceSelect()
+    public void DiceSelect()
     {
         int Ran = Random.Range(1, DiceNumber.Length+1);
 
@@ -54,5 +60,12 @@ public class Dice : MonoBehaviour
         }
 
 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Mixer"))
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 }
