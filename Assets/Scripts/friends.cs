@@ -67,8 +67,15 @@ public class friends : MonoBehaviour
     {
         if (FriendId ==1)
         {
-            talk.Add("Kainin nim");
-            talk.Add("han panheayo");
+            talk.Add("Hi");
+            talk.Add("You want to play FlapyGame?");
+            talk.Add("if your answer is \"yes\" push \"S\"");
+        }
+        else if(FriendId ==2) 
+        {
+            talk.Add("so cold");
+            talk.Add("You want to Change Your Color?");
+            talk.Add("if your answer is \"yes\" push \"C\"");
         }
     }
 
