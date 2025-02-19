@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [Range(0f,10f)][SerializeField]private float speed = 5f;
 
     Rigidbody2D rb;
-    SpriteRenderer rbSprite;
+    public SpriteRenderer rbSprite;
     Animator animator;
 
     void Start()

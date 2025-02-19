@@ -47,19 +47,25 @@ public class friends : MonoBehaviour
                 if(uiManager == null)
                 {
                     Debug.Log("널임");
+                    uiManager = FindAnyObjectByType<UiManager>();
                 }
                 IsMini = true;
                 IsColor = false;
                 uiManager.ImageChange(0);
-                uiManager.SetAct();
+                uiManager.SetAct(1);
                 uiManager.StartCorutine(talk);
             }
             if (this.FriendId == 2)
             {
+                if (uiManager == null)
+                {
+                    Debug.Log("널임");
+                    uiManager = FindAnyObjectByType<UiManager>();
+                }
                 IsMini = false;
                 IsColor = true;
                 uiManager.ImageChange(1);
-                uiManager.SetAct();
+                uiManager.SetAct(1);
                 uiManager.StartCorutine(talk);
             }
 
@@ -71,7 +77,7 @@ public class friends : MonoBehaviour
         }
         if(IsColliding&& IsColor && Input.GetKeyDown(KeyCode.E))
         {
-
+            uiManager.SetAct(2);
         }
     }
 
@@ -83,7 +89,8 @@ public class friends : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             talkText.gameObject.SetActive(false);
-            uiManager.SetFalse();
+            uiManager.SetFalse(1);
+            uiManager.SetFalse(2);
             IsColliding = false;
         }
     }
