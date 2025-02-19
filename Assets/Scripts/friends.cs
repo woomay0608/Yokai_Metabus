@@ -11,11 +11,11 @@ public class friends : MonoBehaviour
 
     [SerializeField] private int FriendId;
     [SerializeField] private TMP_Text talkText;
-    [SerializeField] private Sprite sprite;
+    public Sprite sprite;
 
     List<string> talk = new List<string>();
 
-    private bool IsColliding = false;
+    public bool IsColliding = false;
     private bool IsMini =false;
     private bool IsColor = false;
 
@@ -24,7 +24,6 @@ public class friends : MonoBehaviour
     void Start()
     {
         uiManager = FindAnyObjectByType<UiManager>();
-        talkText.gameObject.SetActive(false);
     }
     //
 
@@ -34,22 +33,38 @@ public class friends : MonoBehaviour
         if(IsColliding && Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("nurum");
-            uiManager.SetIma(sprite);
-            uiManager.SetAct();
+            //uiManager.SetIma(sprite);
             
-            uiManager.StartCorutine(talk);
-            if(this.FriendId == 1)
-            IsMini = true;
-            if(this.FriendId == 2)
-            IsColor = true;
+            
+            
+            if (this.FriendId == 1)
+            {
+                if(uiManager == null)
+                {
+                    Debug.Log("≥Œ¿”");
+                }
+                IsMini = true;
+                IsColor = false;
+                uiManager.ImageChange(0);
+                uiManager.SetAct();
+                uiManager.StartCorutine(talk);
+            }
+            if (this.FriendId == 2)
+            {
+                IsMini = false;
+                IsColor = true;
+                uiManager.ImageChange(1);
+                uiManager.SetAct();
+                uiManager.StartCorutine(talk);
+            }
 
 
         }
-        if(IsMini && Input.GetKeyDown(KeyCode.S))
+        if(IsColliding && IsMini && Input.GetKeyDown(KeyCode.E))
         {
             SceneManager.LoadScene("MiniGame");
         }
-        if(IsColor && Input.GetKeyDown(KeyCode.S))
+        if(IsColliding&& IsColor && Input.GetKeyDown(KeyCode.E))
         {
 
         }
@@ -60,17 +75,23 @@ public class friends : MonoBehaviour
     //enter , stay, Exit
     private void OnTriggerExit2D(Collider2D collision)
     {
-        talkText.gameObject.SetActive(false);
-        uiManager.SetFalse();
-        IsColliding = false;
+        if (collision.CompareTag("Player"))
+        {
+            talkText.gameObject.SetActive(false);
+            uiManager.SetFalse();
+            IsColliding = false;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IsColliding = true;
-        talkText.gameObject.SetActive(true);
-        Debug.Log("æ»≥Á");
+        if (collision.CompareTag("Player"))
+        {
+            IsColliding = true;
+            talkText.gameObject.SetActive(true);
+            Debug.Log("æ»≥Á");
 
-        SetText();
+            SetText();
+        }
  
     }
  
@@ -82,14 +103,14 @@ public class friends : MonoBehaviour
         {
             talk.Add("Hi");
             talk.Add("You want to play FlapyGame?");
-            talk.Add("if your answer is \"yes\" push \"S\"");
+            talk.Add("if your answer is \"yes\" push \"E\"");
         }
         else if(this.FriendId == 2) 
         {
             talk.RemoveRange(0,talk.Count);
             talk.Add("so cold");
             talk.Add("You want to Change Your Color?");
-            talk.Add("if your answer is \"yes\" push \"S\"");
+            talk.Add("if your answer is \"yes\" push \"E\"");
         }
     }
 

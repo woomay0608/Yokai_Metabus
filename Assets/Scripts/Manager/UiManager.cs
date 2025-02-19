@@ -11,39 +11,43 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI Talk;
-    [SerializeField] private Sprite image;
-    [SerializeField] private GameObject GameObject;
-    [SerializeField] private TextMeshPro Flapy;
+    
+    [SerializeField] private GameObject TalkObject;
+    [SerializeField] private Image Image;
+    public static UiManager Instace;
 
-    static UiManager uiManager;
-
-
+    public friends[] friends = new friends[2];
 
     private void Awake()
     {
 
-        if(uiManager == null)
+      
+
+        if(Instace == null)
         {
-            uiManager = this;
-            DontDestroyOnLoad(uiManager);
+            Instace = this;
+            DontDestroyOnLoad(Instace);
         }
         else
         {
-            Destroy(uiManager.gameObject);
+            Destroy(Instace.gameObject);
+           
         }
      
-        if (GameObject ==  null)
+        if (TalkObject ==  null)
         {
-            GameObject = GameObject.Find("TalkObject");
+            TalkObject = GameObject.Find("TalkObject");
         }
     }
 
     private void Start()
     {
+
+        
         
 
-        Flapy =FindAnyObjectByType<TextMeshPro>();
-        ReaderBoardSet();
+  
+        
     }
 
     public  void StartCorutine(List<string> strings)
@@ -52,20 +56,15 @@ public class UiManager : MonoBehaviour
     }
     public void SetAct()
     {
-        if(GameObject != null)
-        GameObject.SetActive(true);
+        if(TalkObject != null)
+            TalkObject.SetActive(true);
     }
     public void SetFalse()
     {
-        if (GameObject != null)
-            GameObject.SetActive(false);
+        if (TalkObject != null)
+            TalkObject.SetActive(false);
     }
 
-    public void SetIma(Sprite sprite)
-    {
-        if (image != null)
-            image = sprite;
-    }
 
     private IEnumerator showtext(List<string> list)
     {
@@ -77,28 +76,10 @@ public class UiManager : MonoBehaviour
         }
     }
 
-
-    public void ReaderBoardSet()
+    public void ImageChange(int i)
     {
-        StringBuilder sb = new StringBuilder();
-        int number = 1;
-        sb.Append("Flapy\n");
-
-        if (GameManager.instance.FlapyList != null)
-        {
-            foreach (int i in GameManager.instance.FlapyList)
-            {
-                sb.Append($"{number}. {i.ToString()}\n");
-                number++;
-                
-            }
-        }
-
-        Debug.Log("리더보드 업데이트됨: " + sb.ToString());
-     
-        Flapy.text = sb.ToString();
-       
-
+        Image.sprite = friends[i].sprite;
     }
+
 
 }

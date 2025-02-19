@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Text;
+using TMPro;
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
@@ -23,7 +25,12 @@ public class GameManager : MonoBehaviour
 
     private const string FlapyBestKey = "FlapyBestKey";
 
+  
+    /// /////////////////////////////////////////////////////////////
+  
 
+
+    [SerializeField] private TextMeshPro Flapy;
     private IMiniGamable currentMiniGame;
 
 
@@ -37,20 +44,21 @@ public class GameManager : MonoBehaviour
             gameManager = this;
             DontDestroyOnLoad(gameManager);
         }
-        else
+        else if(instance != null)
         {
             //
             Destroy(gameManager.gameObject);
+            return;
         }
-        
-        uiManager = FindAnyObjectByType<UiManager>();
+        uiManager = UiManager.Instace;
+
     }
 
 
     private void Start()
     {
-
-        uiManager.ReaderBoardSet();
+   
+        ReaderBoardSet();
 
     }
 
@@ -111,6 +119,34 @@ public class GameManager : MonoBehaviour
         { Debug.Log(i); }
 
 
-        uiManager.ReaderBoardSet();
+        ReaderBoardSet();
+    }
+
+    public void ReaderBoardSet()
+    {
+        StringBuilder sb = new StringBuilder();
+        int number = 1;
+        sb.Append("Flappy\n");
+
+        if (GameManager.instance.FlapyList != null)
+        {
+            foreach (int i in GameManager.instance.FlapyList)
+            {
+                sb.Append($"{number}. {i.ToString()}\n");
+                number++;
+
+            }
+        }
+        else
+        {
+            Debug.Log("FlappyList가 널임");
+        }
+
+        Debug.Log("리더보드 업데이트됨: " + sb.ToString());
+
+        if(Flapy != null)
+        Flapy.text = sb.ToString();
+
+
     }
 }
