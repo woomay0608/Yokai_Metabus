@@ -9,7 +9,7 @@ public class ReaderBorad : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private TextMeshPro Flapy;
-    public List<int> FlapyList = new List<int>();
+   
     void Start()
     {
         ReaderBoardSet();
@@ -27,9 +27,9 @@ public class ReaderBorad : MonoBehaviour
         int number = 1;
         sb.Append("Flappy\n");
 
-        if (FlapyList != null)
+        if (GameManager.instance.FlapyList != null)
         {
-            foreach (int i in FlapyList)
+            foreach (int i in GameManager.instance.FlapyList)
             {
                 sb.Append($"{number}. {i.ToString()}\n");
                 number++;

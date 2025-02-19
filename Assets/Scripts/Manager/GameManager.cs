@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager gameManager;
+    public static GameManager instance;
 
     UiManager uiManager;
 
@@ -22,12 +22,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Slider BlueSlider;
     float blue;
 
+    public List<int> FlapyList = new List<int>();
+
     [SerializeField] private Image SaZin;
 
     [SerializeField] private Player Player;
 
-    [SerializeField] private ReaderBorad reader;
-    public static GameManager instance { get { return gameManager; } }
+    [SerializeField]  private ReaderBorad reader;
+    
     public static UiManager UiManager { get { return UiManager; } }
 
     //게임 최고 기록 저장할 곳
@@ -54,21 +56,21 @@ public class GameManager : MonoBehaviour
 
         if (instance == null)
         {
-            gameManager = this;
-            DontDestroyOnLoad(gameManager);
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else if(instance != null)
         {
             //
-            Destroy(gameManager.gameObject);
+            Destroy(this.gameObject);
             return;
         }
         uiManager = UiManager.Instace;
 
         
 
-        if(reader.FlapyList != null)
-        foreach (int i in reader.FlapyList)
+        if(FlapyList != null)
+        foreach (int i in FlapyList)
         { Debug.Log(i); }
     }
 
@@ -144,13 +146,13 @@ public class GameManager : MonoBehaviour
     public void FlappyUpdateScore(int  currentscore, ref int BestScore)
     {
        
-        reader.FlapyList.Add(currentscore);
-        reader.FlapyList.Sort();
-        reader.FlapyList.Reverse();
+        FlapyList.Add(currentscore);
+        FlapyList.Sort();
+        FlapyList.Reverse();
 
-        if (reader.FlapyList.Count > 5)
+        if (FlapyList.Count > 5)
         {
-            reader.FlapyList.RemoveAt(5);
+            FlapyList.RemoveAt(5);
         }
         
         if (currentscore > BestScore) 
@@ -159,7 +161,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt(FlapyBestKey, BestScore);
         }
 
-        foreach(int i in reader.FlapyList)
+        foreach(int i in FlapyList)
         { Debug.Log(i); }
 
 
