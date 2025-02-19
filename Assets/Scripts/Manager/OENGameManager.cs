@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class OENGameManager : MonoBehaviour, IMiniGamable
 {
@@ -21,6 +22,7 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
 
 
     [SerializeField] DiceMaker DiceMakers;
+    [SerializeField] GameObject DiceDomb;
 
     public bool IsOdd = false;
     public bool IsEven = false;
@@ -76,6 +78,7 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
     public void Retry()
     {
         ENUiManager.SetEndtDown();
+        Score = 0;
         StartCorou();
 
     }
@@ -107,17 +110,27 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
 
     private IEnumerator DiceGo()
     {
+       
         IsOdd = false;
         IsEven = false;
         IsSelect = false;
+
+        DiceDel();
+        DiceList.RemoveRange(0, DiceList.Count);
+        AllNumber = 0;
+
+
         DiceMakers.DiceBatch();
         Tong.StartCor();
+
+
         ENUiManager.OESetAct();
         yield return new WaitUntil(() => IsSelect);
         ENUiManager.OESetFalse();
         Diceon();
-        yield return new WaitForSeconds(2);
 
+
+        yield return new WaitForSeconds(2);
         compare();
     }
 
@@ -153,5 +166,18 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
                 GameEnd();
             }
         }
+    }
+
+    public void DiceDel()
+    {
+        
+        if(DiceDomb != null )
+        {
+            foreach (Transform child in DiceDomb.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
     }
 }
