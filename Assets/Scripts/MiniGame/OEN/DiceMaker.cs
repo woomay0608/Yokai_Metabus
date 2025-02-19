@@ -12,7 +12,7 @@ public class DiceMaker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DiceBatch();
+        
 
 
     }
@@ -24,7 +24,7 @@ public class DiceMaker : MonoBehaviour
     }
 
 
-    void DiceBatch()
+    public void DiceBatch()
     {
         if(OENGameManager.Instace.Score > 1)
         {

@@ -24,14 +24,14 @@ public class Tong : MonoBehaviour
 
     public void StartCor() //나중에 게임매니저에서 실행
     {
-        if (!m_IsPlaying)
+     
          StartCoroutine(Mix());
     }
     private IEnumerator Mix()
     {
         yield return new WaitForSeconds(0.1f);
         m_Animator.SetTrigger("IsStart");
-        m_IsPlaying =true;
+      
 
 
     }
