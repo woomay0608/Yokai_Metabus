@@ -65,7 +65,7 @@ public class FlapyGameManager : MonoBehaviour, IMiniGamable
     }
     public void GameEnd()
     {
-        gameManager.FlapyUpdateScore(Scoreint, ref BestScore);
+        gameManager.FlappyUpdateScore(Scoreint, ref BestScore);
         FlapyUiManager.SetEnd();
     }
 

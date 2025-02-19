@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void FlapyUpdateScore(int  currentscore, ref int BestScore)
+    public void FlappyUpdateScore(int  currentscore, ref int BestScore)
     {
        
         FlapyList.Add(currentscore);

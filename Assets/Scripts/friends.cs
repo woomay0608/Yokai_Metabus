@@ -21,9 +21,14 @@ public class friends : MonoBehaviour
 
     UiManager uiManager;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         uiManager = FindAnyObjectByType<UiManager>();
+    }
+    void Start()
+    {
+        
     }
     //
 
@@ -102,7 +107,7 @@ public class friends : MonoBehaviour
         if(this.FriendId ==1)
         {
             talk.Add("Hi");
-            talk.Add("You want to play FlapyGame?");
+            talk.Add("You want to play FlappyGame?");
             talk.Add("if your answer is \"yes\" push \"E\"");
         }
         else if(this.FriendId == 2) 
