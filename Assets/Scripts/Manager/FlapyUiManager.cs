@@ -11,7 +11,10 @@ public class FlapyUiManager : MonoBehaviour
     public Button ReTurn;
     public Button StartButton;
     public Button ReStart;
-
+    public GameObject ShowRule;
+    public GameObject ScoreBoard;
+    public TextMeshProUGUI Best;
+    public TextMeshProUGUI CurrntScore;
     private int Scoreint;
 
 
@@ -38,12 +41,15 @@ public class FlapyUiManager : MonoBehaviour
 
     public void SetDonw()
     {
+        ShowRule.gameObject.SetActive(false);
         StartButton.gameObject.SetActive(false);
         ReTurn.gameObject.SetActive(false);
     }
 
     public void SetEnd()
     {
+        CurrntScore.text = Scoreint.ToString();
+        ScoreBoard.gameObject.SetActive(true);
         ReTurn.gameObject.SetActive(true);
         ReStart.gameObject.SetActive(true);
     }
