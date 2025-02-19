@@ -25,6 +25,7 @@ public class UiManager : MonoBehaviour
         if(uiManager == null)
         {
             uiManager = this;
+            DontDestroyOnLoad(uiManager.gameObject);
         }
         else
         {
@@ -35,6 +36,12 @@ public class UiManager : MonoBehaviour
         {
             GameObject = GameObject.Find("TalkObject");
         }
+    }
+
+    private void Start()
+    {
+        Flapy =FindAnyObjectByType<TextMeshPro>();
+        ReaderBoardSet();
     }
 
     public  void StartCorutine(List<string> strings)
