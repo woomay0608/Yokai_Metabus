@@ -729,7 +729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 356519539}
   m_Layer: 0
-  m_Name: DiceDome
+  m_Name: DiceDomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1627,6 +1627,7 @@ MonoBehaviour:
   Tong: {fileID: 2101153739}
   DiceList: []
   DiceMakers: {fileID: 2036148160}
+  DiceDomb: {fileID: 356519538}
   IsOdd: 0
   IsEven: 0
   IsSelect: 0
@@ -2977,6 +2978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dice: {fileID: 8675329068390201151, guid: 5ec813192e777ff4dacef128e4dff2bf, type: 3}
+  DicePrefab: {fileID: 356519538}
 --- !u!212 &2036148161
 SpriteRenderer:
   m_ObjectHideFlags: 0
