@@ -11,11 +11,11 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI Talk;
-    [SerializeField] private Image image;
+    [SerializeField] private Sprite image;
     [SerializeField] private GameObject GameObject;
     [SerializeField] private TextMeshPro Flapy;
 
-    private UiManager uiManager;
+    static UiManager uiManager;
 
 
 
@@ -25,7 +25,7 @@ public class UiManager : MonoBehaviour
         if(uiManager == null)
         {
             uiManager = this;
-            DontDestroyOnLoad(uiManager.gameObject);
+            DontDestroyOnLoad(uiManager);
         }
         else
         {
@@ -40,6 +40,8 @@ public class UiManager : MonoBehaviour
 
     private void Start()
     {
+        
+
         Flapy =FindAnyObjectByType<TextMeshPro>();
         ReaderBoardSet();
     }
@@ -50,19 +52,19 @@ public class UiManager : MonoBehaviour
     }
     public void SetAct()
     {
-        if(gameObject != null)
+        if(GameObject != null)
         GameObject.SetActive(true);
     }
     public void SetFalse()
     {
-        if (gameObject != null)
+        if (GameObject != null)
             GameObject.SetActive(false);
     }
 
     public void SetIma(Sprite sprite)
     {
         if (image != null)
-            image.sprite = sprite;
+            image = sprite;
     }
 
     private IEnumerator showtext(List<string> list)
