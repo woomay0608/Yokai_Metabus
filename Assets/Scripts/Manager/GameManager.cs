@@ -10,10 +10,17 @@ public class GameManager : MonoBehaviour
     static GameManager gameManager;
 
     UiManager uiManager;
-    
+
 
     public static GameManager instance { get { return gameManager; } }
     public static UiManager UiManager { get { return UiManager; } }
+
+    //게임 최고 기록 저장할 곳
+    private int FlapyBestScore = 0;
+
+    public int flapyBestScore { get => FlapyBestScore; set { flapyBestScore = value; } }
+
+    private const string FlapyBestKey = "FlapyBestKey";
 
 
     private IMiniGamable currentMiniGame;
@@ -21,6 +28,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
+        FlapyBestScore = PlayerPrefs.GetInt(FlapyBestKey, 0);
+
         if (instance == null)
         {
             gameManager = this;
@@ -38,8 +48,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-    
-        
+       
+
+
     }
 
     private void Update()
@@ -76,4 +87,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    public void UpdateScore(int  currentscore, ref int BestScore)
+    {
+        if(currentscore > BestScore) 
+        {
+            BestScore = currentscore;
+            PlayerPrefs.SetInt(FlapyBestKey, BestScore);
+        }
+    }
 }

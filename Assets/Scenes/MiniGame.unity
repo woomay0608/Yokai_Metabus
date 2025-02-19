@@ -955,7 +955,7 @@ MonoBehaviour:
   FlapForce: 6
   ForwardForce: 3
   IsDead: 0
-  GodMode: 1
+  GodMode: 0
 --- !u!1001 &200733902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 354671733}
   - component: {fileID: 354671732}
   m_Layer: 5
-  m_Name: ScoreBest (1)
+  m_Name: ScoreCurrent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2275,7 +2275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &764559541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2398,7 +2398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &925496418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3148,6 +3148,9 @@ MonoBehaviour:
   StartButton: {fileID: 1368702940}
   ReStart: {fileID: 1593701968}
   ShowRule: {fileID: 1380523867}
+  ScoreBoard: {fileID: 925496417}
+  Best: {fileID: 1303633056}
+  CurrntScore: {fileID: 354671732}
 --- !u!1 &1279529757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3439,7 +3442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1368702939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3569,7 +3572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1380523868
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4222,7 +4225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1593701967
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4468,6 +4471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9751501a6ee5a46bbdfe899cbec83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scoreint: 0
+  BestScore: 0
 --- !u!4 &1691565553
 Transform:
   m_ObjectHideFlags: 0

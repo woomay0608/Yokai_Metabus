@@ -12,6 +12,10 @@ public class FlapyGameManager : MonoBehaviour, IMiniGamable
 
     GameManager gameManager;
 
+
+    public int Scoreint;
+    public int BestScore;
+    
     // Start is called before the first frame update
 
     private void Awake()
@@ -30,8 +34,7 @@ public class FlapyGameManager : MonoBehaviour, IMiniGamable
     }
     void Start()
     {
-        
-   
+        BestScore = gameManager.flapyBestScore;
 
 
 
@@ -62,6 +65,7 @@ public class FlapyGameManager : MonoBehaviour, IMiniGamable
     }
     public void GameEnd()
     {
+        gameManager.UpdateScore(Scoreint, ref BestScore);
         FlapyUiManager.SetEnd();
     }
 

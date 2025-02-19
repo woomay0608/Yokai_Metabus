@@ -15,14 +15,14 @@ public class FlapyUiManager : MonoBehaviour
     public GameObject ScoreBoard;
     public TextMeshProUGUI Best;
     public TextMeshProUGUI CurrntScore;
-    private int Scoreint;
 
+    FlapyGameManager FlapyGameManager;
 
     void Start()
     {
-        //ReTurn = GetComponentInChildren<Button>(true);
-        //StartButton = GetComponentInChildren<Button>(true);
-        //ReStart = GetComponentInChildren<Button>(true);
+
+        FlapyGameManager = FindAnyObjectByType<FlapyGameManager>();
+
     }
 
     // Update is called once per frame
@@ -35,8 +35,8 @@ public class FlapyUiManager : MonoBehaviour
     public void ScoreSet(int i)
     {
 
-        Scoreint += i;
-        Score.text = Scoreint.ToString();
+        FlapyGameManager.Scoreint += i;
+        Score.text = FlapyGameManager.Scoreint.ToString();
     }
 
     public void SetDonw()
@@ -48,7 +48,8 @@ public class FlapyUiManager : MonoBehaviour
 
     public void SetEnd()
     {
-        CurrntScore.text = Scoreint.ToString();
+        Best.text = FlapyGameManager.BestScore.ToString();
+        CurrntScore.text = FlapyGameManager.Scoreint.ToString();
         ScoreBoard.gameObject.SetActive(true);
         ReTurn.gameObject.SetActive(true);
         ReStart.gameObject.SetActive(true);
