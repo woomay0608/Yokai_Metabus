@@ -28,17 +28,7 @@ public class OENUiManager : MonoBehaviour
         Odd.onClick.AddListener(isodd);
         Even.onClick.AddListener(iseven);
     }
-    void Start()
-    {
-        
-    }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void SetScore(int i)
     {
         OENGameManager.Instace.Score += i;

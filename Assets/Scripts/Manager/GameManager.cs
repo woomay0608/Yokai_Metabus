@@ -15,8 +15,21 @@ public class GameManager : MonoBehaviour
     UiManager uiManager;
 
 
+    //static GameManager gameManager;
+    //public static GameManager instance { get { return gameManager; } }
+    //      if (instance == null)
+    //      {
+    //          gameManager = this;
+    //          DontDestroyOnLoad(gameManager);
+    //}
+    //      else if (instance != null)
+    //{
+    //    //
+    //    Destroy(gameManager.gameObject);
+    //    return;
+    //}
     [SerializeField] private Slider RedSlider;
-     float red;
+    float red;
     [SerializeField] private Slider GreenSlider;
     float green;
     [SerializeField] private Slider BlueSlider;
@@ -28,21 +41,21 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Player Player;
 
-    [SerializeField]  private ReaderBorad reader;
-    
+    [SerializeField] private ReaderBorad reader;
+
     public static UiManager UiManager { get { return UiManager; } }
 
     //게임 최고 기록 저장할 곳
     private int FlapyBestScore = 0;
 
-    
+
     public int flapyBestScore { get => FlapyBestScore; set { flapyBestScore = value; } }
 
     private const string FlapyBestKey = "FlapyBestKey";
 
-  
+
     /// /////////////////////////////////////////////////////////////
-  
+
 
 
 
@@ -59,7 +72,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-        else if(instance != null)
+        else if (instance != null)
         {
             //
             Destroy(this.gameObject);
@@ -67,28 +80,28 @@ public class GameManager : MonoBehaviour
         }
         uiManager = UiManager.Instace;
 
-        
 
-        if(FlapyList != null)
-        foreach (int i in FlapyList)
-        { Debug.Log(i); }
+
+        if (FlapyList != null)
+            foreach (int i in FlapyList)
+            { Debug.Log(i); }
     }
 
 
 
     public void RedSet()
     {
-        red = RedSlider.value; 
+        red = RedSlider.value;
         Debug.Log("레드" + red);
         ColorChange();
     }
-    public void BlueSet() 
+    public void BlueSet()
     {
         blue = BlueSlider.value;
-        Debug.Log("블루"+blue);
+        Debug.Log("블루" + blue);
         ColorChange();
     }
-    public void GreenSet() 
+    public void GreenSet()
     {
         green = GreenSlider.value;
         Debug.Log("그린" + green);
@@ -103,24 +116,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-   
-        
+
+
 
     }
 
     private void Update()
     {
-      
+
     }
 
     public void SetMini(IMiniGamable mini)
     {
         currentMiniGame = mini;
     }
-  
+
     public void StartMini()
     {
-        if(currentMiniGame != null)
+        if (currentMiniGame != null)
         {
             currentMiniGame.GameStart();
         }
@@ -143,9 +156,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void FlappyUpdateScore(int  currentscore, ref int BestScore)
+    public void FlappyUpdateScore(int currentscore, ref int BestScore)
     {
-       
+
         FlapyList.Add(currentscore);
         FlapyList.Sort();
         FlapyList.Reverse();
@@ -154,19 +167,19 @@ public class GameManager : MonoBehaviour
         {
             FlapyList.RemoveAt(5);
         }
-        
-        if (currentscore > BestScore) 
+
+        if (currentscore > BestScore)
         {
             BestScore = currentscore;
             PlayerPrefs.SetInt(FlapyBestKey, BestScore);
         }
 
-        foreach(int i in FlapyList)
+        foreach (int i in FlapyList)
         { Debug.Log(i); }
 
 
-      
+
     }
 
-    
+
 }
