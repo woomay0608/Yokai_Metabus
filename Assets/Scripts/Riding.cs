@@ -32,13 +32,15 @@ public class Riding : MonoBehaviour
     {
         SpriteRenderer.sprite = Ridingone;
         animator.SetBool("IsKitsu",true );
-        player.speed += 3f;
+        animator.SetBool("IsGho", false);
+        player.speed = 6f;
     }
     public void RidingTwoon()
     {
         SpriteRenderer.sprite = RidingTwo;
-        animator.SetBool("IsKitus", true);
-        player.speed += 3f;
+        animator.SetBool("IsGho", true);
+        animator.SetBool("IsKitsu", false);
+        player.speed = 6f;
     }
 
 

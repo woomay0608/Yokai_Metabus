@@ -1,9 +1,12 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    public static Player instance;
     private Vector2 Inputvetor;
     private bool IsLeft;
     private bool IsRight;
@@ -20,8 +23,17 @@ public class Player : MonoBehaviour
    
     Animator animator;
 
+    private void Awake()
+    {
+
+      
+  
+    }
+
     void Start()
     {
+
+     
         rb = GetComponent<Rigidbody2D>();
         rbSprite = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();

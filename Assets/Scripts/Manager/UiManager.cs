@@ -64,7 +64,7 @@ public class UiManager : MonoBehaviour
 
     private void Start()
     {
-        ShowRiding();
+        
     }
 
     public  void StartCorutine(List<string> strings)
@@ -118,6 +118,7 @@ public class UiManager : MonoBehaviour
     {
         if(Ridingnshop != null)
         {
+            ShowRiding();
             Ridingnshop.SetActive(true);
             SetFalse();
         }
@@ -169,13 +170,13 @@ public class UiManager : MonoBehaviour
         {
             RidingOne.color = new Color(1f, 1f, 1f);
             RidingOnee.onClick.AddListener(rind.RidingOneOn);
-           RidingOnee.gameObject.SetActive(true);
+            RidingOnee.gameObject.SetActive(true);
         }
         if (GameManager.instance.IsRidingTwo)
         {
             RidingTwo.color = new Color(1f, 1f, 1f);
-            RidingOnee.onClick.AddListener(rind.RidingTwoon);
-            RidingOnee.gameObject.SetActive(false);
+            RidingTwoe.onClick.AddListener(rind.RidingTwoon);
+            RidingTwoe.gameObject.SetActive(true);
         }
     }
 }
