@@ -24,6 +24,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Image[] Accessorys = new Image[6];
     public bool[] IsFind = new bool[6];
     [Header("Riding")]
+    [SerializeField] private GameObject Ridingnshop;
     [SerializeField] private Riding rind;
     [SerializeField] private Image RidingOne;
     [SerializeField] private Image RidingTwo;
@@ -87,6 +88,7 @@ public class UiManager : MonoBehaviour
         if(ColorObject != null)
         {
             ColorObject.SetActive(true);
+            SetFalse();
         }
     }
     public void DownColor()
@@ -94,6 +96,7 @@ public class UiManager : MonoBehaviour
         if(ColorObject != null)
         {
             ColorObject.SetActive(false );
+           
         }
     }
     public void SetAcce()
@@ -101,6 +104,7 @@ public class UiManager : MonoBehaviour
         if (Accessory != null)
         {
             Accessory.SetActive(true);
+            SetFalse();
         }
     }
     public void DownAcce()
@@ -109,6 +113,22 @@ public class UiManager : MonoBehaviour
         {
             Accessory.SetActive(false);
         }
+    }
+    public void SetRide()
+    {
+        if(Ridingnshop != null)
+        {
+            Ridingnshop.SetActive(true);
+            SetFalse();
+        }
+    }
+    public void DownRide()
+    {
+        if(Ridingnshop != null)
+        {
+            Ridingnshop.SetActive(false);
+        }
+
     }
 
 

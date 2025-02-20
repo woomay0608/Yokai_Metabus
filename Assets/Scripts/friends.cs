@@ -94,6 +94,21 @@ public class friends : MonoBehaviour
                 uiManager.StartCorutine(talk);
             }
 
+            if(this.FriendId == 5)
+            {
+                if (uiManager == null)
+                {
+                    Debug.Log("Ёнюс");
+                    uiManager = FindAnyObjectByType<UiManager>();
+                }
+                Yes.onClick.RemoveAllListeners();
+                Yes.onClick.AddListener(uiManager.SetRide);
+                uiManager.ImageChange(4);
+                uiManager.SetAct();
+                uiManager.StartCorutine(talk);
+
+            }
+
 
         }
 
@@ -119,6 +134,7 @@ public class friends : MonoBehaviour
             uiManager.SetFalse();
             uiManager.DownAcce();
             uiManager.DownColor();
+            uiManager.DownRide();
             IsColliding = false;
         }
     }
@@ -165,6 +181,13 @@ public class friends : MonoBehaviour
             talk.Add("If you've found an accessory, talk to me");
             talk.Add("I can help you put it on");
             
+        }
+        else if (this.FriendId == 5)
+        {
+            talk.RemoveRange(0, talk.Count);
+            talk.Add("If you ever get a high score in a minigame, let me come.");
+            talk.Add("Let me show you something you can ride.");
+
         }
     }
 
