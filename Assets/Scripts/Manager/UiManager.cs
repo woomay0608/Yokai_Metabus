@@ -14,7 +14,17 @@ public class UiManager : MonoBehaviour
     
     [SerializeField] private GameObject TalkObject;
     [SerializeField] private GameObject ColorObject;
+    [SerializeField] private GameObject Accessory;
+
     [SerializeField] private Image Image;
+
+    [SerializeField] private Button[] Buttons = new Button[6];
+    [SerializeField] private Accessorry[] Accessors = new Accessorry[6];
+    [SerializeField] private Image[] Accessorys = new Image[6];
+    public bool[] IsFind = new bool[6];
+
+
+
     public static UiManager Instace;
 
     public friends[] friends = new friends[2];
@@ -57,6 +67,8 @@ public class UiManager : MonoBehaviour
             TalkObject.SetActive(true);
         if(i == 2 && ColorObject != null)
             ColorObject.SetActive(true);
+        if(i == 3 && Accessory != null)
+             Accessory.SetActive(true);
     }
     public void SetFalse(int i)
     {
@@ -64,6 +76,8 @@ public class UiManager : MonoBehaviour
             TalkObject.SetActive(false);
         if (i == 2 && ColorObject != null)
             ColorObject.SetActive(false);
+        if (i == 3 && Accessory != null)
+            Accessory.SetActive(false);
     }
 
 
@@ -82,5 +96,18 @@ public class UiManager : MonoBehaviour
         Image.sprite = friends[i].sprite;
     }
 
+    public void ShowAcces()
+    {
+        for(int i = 0; i< Accessorys.Length; i++) 
+        {
+            if (IsFind[i] == true)
+            {
+                
+                Buttons[i].gameObject.SetActive(true);
+                Buttons[i].onClick.AddListener(Accessors[i].Equip);
+                Accessorys[i].gameObject.SetActive(true);
 
+            }
+        }
+    }
 }
