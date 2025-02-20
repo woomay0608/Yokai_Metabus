@@ -9,8 +9,7 @@ public class ReaderBorad : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private TextMeshPro Flapy;
-    [SerializeField] private TextMeshPro Dice
-        ;
+    [SerializeField] private TextMeshPro Dice;
    
     void Start()
     {
@@ -26,9 +25,11 @@ public class ReaderBorad : MonoBehaviour
     public void ReaderBoardSet() //ReaderBoard에다가 넣자
     {
         StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
         int number = 1;
-        sb.Append("Flappy\n");
 
+        sb.Append("Flappy\n");
+        sb2.Append("Dice\n");
         if (GameManager.instance.FlapyList != null)
         {
             foreach (int i in GameManager.instance.FlapyList)
@@ -42,11 +43,23 @@ public class ReaderBorad : MonoBehaviour
         {
             Debug.Log("FlappyList가 널임");
         }
+        if(GameManager.instance.DiceList != null) 
+        {
+            foreach(int i  in GameManager.instance.DiceList)
+            {
+                sb2.Append($"{number - GameManager.instance.FlapyList.Count +1}. {i.ToString()}\n");
+                number++;
+            }
+        }
+
+
 
         Debug.Log("리더보드 업데이트됨: " + sb.ToString());
 
         if (Flapy != null)
             Flapy.text = sb.ToString();
+        if(Dice != null)
+            Dice.text = sb2.ToString();
 
 
     }
