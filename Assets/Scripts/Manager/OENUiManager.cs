@@ -23,6 +23,10 @@ public class OENUiManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI Score;
 
+
+    [SerializeField] private TextMeshProUGUI Best;
+    [SerializeField] private TextMeshProUGUI Current;
+
     private void Awake()
     {
         Odd.onClick.AddListener(isodd);
@@ -38,6 +42,9 @@ public class OENUiManager : MonoBehaviour
 
     public void SetDown()
     {
+        Score.gameObject.SetActive(false);
+        Best.text = OENGameManager.Instace.BestScore.ToString();
+        Current.text = OENGameManager.Instace.Score.ToString();
         GameLose.SetActive(true);
     }
     public void SetStart()
