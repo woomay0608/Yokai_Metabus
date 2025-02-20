@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     private bool IsLeft;
     private bool IsRight;
 
+
+    [SerializeField] private Pivot Pivots
+        ;
     [Range(0f,10f)][SerializeField]private float speed = 5f;
 
  
@@ -32,11 +35,15 @@ public class Player : MonoBehaviour
 
         if(Inputvetor.x  == -1)
         {
+            Pivots.Sprite.flipX = true;
+            Pivots.transform.position =transform.position + new Vector3(0.3f,0.3f,0f);
             IsLeft = true;
             IsRight = false;
         }
         if(Inputvetor.x == 1)
         {
+            Pivots.Sprite.flipX = false;
+            Pivots.transform.position = transform.position + new Vector3(-0.3f, 0.3f, 0f);
             IsRight = true;
             IsLeft = false;
         }

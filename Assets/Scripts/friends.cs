@@ -19,6 +19,7 @@ public class friends : MonoBehaviour
     private bool IsMini =false;
     private bool IsColor = false;
     private bool IsDice = false;
+    private bool IsAcce = false;
 
     UiManager uiManager;
     // Start is called before the first frame update
@@ -53,6 +54,7 @@ public class friends : MonoBehaviour
                 IsMini = true;
                 IsColor = false;
                 IsDice = false;
+                IsAcce = false;
                 uiManager.ImageChange(0);
                 uiManager.SetAct(1);
                 uiManager.StartCorutine(talk);
@@ -67,6 +69,7 @@ public class friends : MonoBehaviour
                 IsMini = false;
                 IsColor = true;
                 IsDice = false;
+                IsAcce = false;
                 uiManager.ImageChange(1);
                 uiManager.SetAct(1);
                 uiManager.StartCorutine(talk);
@@ -81,7 +84,23 @@ public class friends : MonoBehaviour
                 IsMini = false;
                 IsColor = false;
                 IsDice = true;
+                IsAcce = false;
                 uiManager.ImageChange(2);
+                uiManager.SetAct(1);
+                uiManager.StartCorutine(talk);
+            }
+            if (this.FriendId == 4)
+            {
+                if (uiManager == null)
+                {
+                    Debug.Log("Ёнюс");
+                    uiManager = FindAnyObjectByType<UiManager>();
+                }
+                IsMini = false;
+                IsColor = false;
+                IsDice = false;
+                IsAcce = true;
+                uiManager.ImageChange(3);
                 uiManager.SetAct(1);
                 uiManager.StartCorutine(talk);
             }
@@ -100,6 +119,10 @@ public class friends : MonoBehaviour
         {
             SceneManager.LoadScene("MiniGame2");
         }
+        if (IsColliding && IsAcce && Input.GetKeyDown(KeyCode.E))
+        {
+            uiManager.SetAct(3);
+        }
 
     }
 
@@ -113,6 +136,7 @@ public class friends : MonoBehaviour
             talkText.gameObject.SetActive(false);
             uiManager.SetFalse(1);
             uiManager.SetFalse(2);
+            uiManager.SetFalse(3);
             IsColliding = false;
         }
     }
@@ -152,6 +176,13 @@ public class friends : MonoBehaviour
             talk.Add("Do you like Gamble?");
             talk.Add("if You want to play OddAndEvenDice");
             talk.Add("push \"E\" and then take you to there");
+        }
+        else if (this.FriendId == 4)
+        {
+            talk.RemoveRange(0, talk.Count);
+            talk.Add("If you've found an accessory, talk to me");
+            talk.Add("I can help you put it on");
+            talk.Add("push \"E\" I'll make you pretty");
         }
     }
 

@@ -102,7 +102,8 @@ public class UiManager : MonoBehaviour
         {
             if (IsFind[i] == true)
             {
-                
+                Buttons[i].onClick.RemoveAllListeners();
+
                 Buttons[i].gameObject.SetActive(true);
                 Buttons[i].onClick.AddListener(Accessors[i].Equip);
                 Accessorys[i].gameObject.SetActive(true);
