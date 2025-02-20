@@ -18,6 +18,7 @@ public class friends : MonoBehaviour
     public bool IsColliding = false;
     private bool IsMini =false;
     private bool IsColor = false;
+    private bool IsDice = false;
 
     UiManager uiManager;
     // Start is called before the first frame update
@@ -51,6 +52,7 @@ public class friends : MonoBehaviour
                 }
                 IsMini = true;
                 IsColor = false;
+                IsDice = false;
                 uiManager.ImageChange(0);
                 uiManager.SetAct(1);
                 uiManager.StartCorutine(talk);
@@ -64,7 +66,22 @@ public class friends : MonoBehaviour
                 }
                 IsMini = false;
                 IsColor = true;
+                IsDice = false;
                 uiManager.ImageChange(1);
+                uiManager.SetAct(1);
+                uiManager.StartCorutine(talk);
+            }
+            if (this.FriendId == 3)
+            {
+                if (uiManager == null)
+                {
+                    Debug.Log("널임");
+                    uiManager = FindAnyObjectByType<UiManager>();
+                }
+                IsMini = false;
+                IsColor = false;
+                IsDice = true;
+                uiManager.ImageChange(2);
                 uiManager.SetAct(1);
                 uiManager.StartCorutine(talk);
             }
@@ -79,6 +96,11 @@ public class friends : MonoBehaviour
         {
             uiManager.SetAct(2);
         }
+        if (IsColliding && IsDice && Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.LoadScene("MiniGame2");
+        }
+
     }
 
     //충돌을 감지해주는 메소드
@@ -123,6 +145,13 @@ public class friends : MonoBehaviour
             talk.Add("so cold");
             talk.Add("You want to Change Your Color?");
             talk.Add("if your answer is \"yes\" push \"E\"");
+        }
+        else if(this.FriendId == 3) 
+        {
+            talk.RemoveRange(0, talk.Count);
+            talk.Add("Do you like Gamble?");
+            talk.Add("if You want to play OddAndEvenDice");
+            talk.Add("push \"E\" and then take you to there");
         }
     }
 

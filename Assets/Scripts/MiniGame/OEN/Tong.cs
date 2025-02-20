@@ -9,7 +9,7 @@ public class Tong : MonoBehaviour
 
     private Coroutine mixCoroutine;
 
-    bool m_IsPlaying = false;
+
     // Start is called before the first frame update
     void Start()
     {
