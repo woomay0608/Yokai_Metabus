@@ -28,7 +28,8 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
     public bool IsEven = false;
 
     public bool IsSelect = false;
-   
+
+    public int BestScore = 0;
 
     private void Awake()
     {
@@ -42,7 +43,7 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
     {
         Tong = FindAnyObjectByType<Tong>();
 
-
+        BestScore = GameManager.instance.DiceBestSc;
         GameManager.instance.SetMini(Instace);
 
         Time.timeScale = 0f;
@@ -65,6 +66,7 @@ public class OENGameManager : MonoBehaviour, IMiniGamable
     }
     public void GameEnd()
     {
+        GameManager.instance.DiceUpdateSocre(Score, ref BestScore);
         ENUiManager.SetDown();
     }
 

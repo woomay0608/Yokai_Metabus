@@ -9,6 +9,8 @@ public class ReaderBorad : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private TextMeshPro Flapy;
+    [SerializeField] private TextMeshPro Dice
+        ;
    
     void Start()
     {

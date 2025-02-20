@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Slider BlueSlider;
     float blue;
 
-    public List<int> FlapyList = new List<int>();
+   
 
     [SerializeField] private Image SaZin;
 
@@ -48,10 +48,20 @@ public class GameManager : MonoBehaviour
     //게임 최고 기록 저장할 곳
     private int FlapyBestScore = 0;
 
-
+    public List<int> FlapyList = new List<int>();
     public int flapyBestScore { get => FlapyBestScore; set { flapyBestScore = value; } }
 
     private const string FlapyBestKey = "FlapyBestKey";
+
+
+    private int DiceBestScore = 0;
+
+    public List<int> DiceList = new List<int>();
+
+    public int DiceBestSc { get => DiceBestScore; set { DiceBestScore = value; } }
+    private const string DiceBestKey = "DiceBestKey";
+
+
 
 
     /// /////////////////////////////////////////////////////////////
@@ -66,6 +76,7 @@ public class GameManager : MonoBehaviour
     {
 
         FlapyBestScore = PlayerPrefs.GetInt(FlapyBestKey, 0);
+        DiceBestScore = PlayerPrefs.GetInt(DiceBestKey, 0);
 
         if (instance == null)
         {
@@ -158,11 +169,10 @@ public class GameManager : MonoBehaviour
 
     public void FlappyUpdateScore(int currentscore, ref int BestScore)
     {
-
         FlapyList.Add(currentscore);
         FlapyList.Sort();
         FlapyList.Reverse();
-
+        
         if (FlapyList.Count > 5)
         {
             FlapyList.RemoveAt(5);
@@ -176,9 +186,24 @@ public class GameManager : MonoBehaviour
 
         foreach (int i in FlapyList)
         { Debug.Log(i); }
+    }
 
+    public void DiceUpdateSocre(int currentscore, ref int BestScore)
+    {
+        DiceList.Add(currentscore);
+        DiceList.Sort();
+        DiceList.Reverse();
+        
+        if(DiceList.Count > 5) 
+        {
+            DiceList.RemoveAt(5);
+        }
 
-
+        if (currentscore > BestScore) 
+        {
+            BestScore = currentscore;
+            PlayerPrefs.SetInt(DiceBestKey, BestScore);
+        }
     }
 
 
