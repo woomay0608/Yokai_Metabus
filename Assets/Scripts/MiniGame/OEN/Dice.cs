@@ -26,7 +26,7 @@ public class Dice : MonoBehaviour
 
     public void DiceSelect()
     {
-        int Ran = Random.Range(1, DiceNumber.Length+1);
+        int Ran = Random.Range(0, DiceNumber.Length+1);
 
         if(Ran == 0)
         {

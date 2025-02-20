@@ -18465,7 +18465,7 @@ Animator:
   m_GameObject: {fileID: 1155959954}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e606b2b4fb61f64d8865824db1cf17d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -18926,6 +18926,7 @@ MonoBehaviour:
   friends:
   - {fileID: 1661565289}
   - {fileID: 1034310311}
+  - {fileID: 691036192}
 --- !u!4 &1340624698
 Transform:
   m_ObjectHideFlags: 0
