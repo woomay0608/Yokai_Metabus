@@ -47,7 +47,7 @@ public class ReaderBorad : MonoBehaviour
         {
             foreach(int i  in GameManager.instance.DiceList)
             {
-                sb2.Append($"{number - GameManager.instance.FlapyList.Count +1}. {i.ToString()}\n");
+                sb2.Append($"{number - GameManager.instance.FlapyList.Count}. {i.ToString()}\n");
                 number++;
             }
         }
