@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
     private bool IsRight;
 
 
-    [SerializeField] private Pivot Pivots
-        ;
+    [SerializeField] private Pivot Pivots;
+    [SerializeField] private Riding riding;
     [Range(0f,10f)][SerializeField]private float speed = 5f;
 
  
@@ -37,12 +37,14 @@ public class Player : MonoBehaviour
         {
             Pivots.Sprite.flipX = true;
             Pivots.transform.position =transform.position + new Vector3(0.3f,0.3f,0f);
+            riding.SpriteRenderer.flipX = true;
             IsLeft = true;
             IsRight = false;
         }
         if(Inputvetor.x == 1)
         {
             Pivots.Sprite.flipX = false;
+            riding.SpriteRenderer.flipX = false;
             Pivots.transform.position = transform.position + new Vector3(-0.3f, 0.3f, 0f);
             IsRight = true;
             IsLeft = false;
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
         if(IsLeft){rbSprite.flipX = true;}
         if (IsRight) { rbSprite.flipX=false;}
         animator.SetBool("IsMove", Inputvetor.magnitude > 0);
+        riding.animator.SetBool("IsMove", Inputvetor.magnitude > 0);
 
 
         Vector2 moveAmount = Inputvetor.normalized * speed * Time.fixedDeltaTime;
