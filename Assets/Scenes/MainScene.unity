@@ -1421,7 +1421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44e414915f7d9645b8659b9e637a252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  Pivots: {fileID: 1164639070}
+  speed: 5.48
   rbSprite: {fileID: 0}
 --- !u!61 &208550605
 BoxCollider2D:
@@ -21231,7 +21232,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 300
   m_Sprite: {fileID: 21300000, guid: e604ee3d24a68c348b29ceea30c01256, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
