@@ -37,14 +37,14 @@ public class Player : MonoBehaviour
         {
             Pivots.Sprite.flipX = true;
             Pivots.transform.position =transform.position + new Vector3(0.3f,0.3f,0f);
-            riding.SpriteRenderer.flipX = true;
+            riding.SpriteRenderer.flipX = false;
             IsLeft = true;
             IsRight = false;
         }
         if(Inputvetor.x == 1)
         {
             Pivots.Sprite.flipX = false;
-            riding.SpriteRenderer.flipX = false;
+            riding.SpriteRenderer.flipX = true;
             Pivots.transform.position = transform.position + new Vector3(-0.3f, 0.3f, 0f);
             IsRight = true;
             IsLeft = false;

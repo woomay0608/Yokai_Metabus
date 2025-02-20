@@ -149,11 +149,13 @@ public class UiManager : MonoBehaviour
         {
             RidingOne.color = new Color(1f, 1f, 1f);
             RidingOnee.onClick.AddListener(rind.RidingOneOn);
+           RidingOnee.gameObject.SetActive(true);
         }
         if (GameManager.instance.IsRidingTwo)
         {
             RidingTwo.color = new Color(1f, 1f, 1f);
             RidingOnee.onClick.AddListener(rind.RidingTwoon);
+            RidingOnee.gameObject.SetActive(false);
         }
     }
 }

@@ -21942,7 +21942,9 @@ MonoBehaviour:
   Player: {fileID: 208550604}
   reader: {fileID: 1537420194}
   FlapyList: 
+  IsRidingOne: 0
   DiceList: 
+  IsRidingTwo: 0
 --- !u!4 &1097114433
 Transform:
   m_ObjectHideFlags: 0
@@ -23053,8 +23055,8 @@ MonoBehaviour:
   Talk: {fileID: 375567291}
   TalkObject: {fileID: 2011257995}
   ColorObject: {fileID: 448525580}
-  Accessory: {fileID: 1423978259}
   Image: {fileID: 1586436249}
+  Accessory: {fileID: 1423978259}
   Buttons:
   - {fileID: 1498772527}
   - {fileID: 288975050}
@@ -23077,6 +23079,11 @@ MonoBehaviour:
   - {fileID: 819331776}
   - {fileID: 340464161}
   IsFind: 000000000000
+  rind: {fileID: 1852739409}
+  RidingOne: {fileID: 920044589}
+  RidingTwo: {fileID: 1113931180}
+  RidingOnee: {fileID: 1498772527}
+  RidingTwoe: {fileID: 692227354}
   friends:
   - {fileID: 1661565289}
   - {fileID: 1034310311}
@@ -25637,7 +25644,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 300
-  m_Sprite: {fileID: 21300000, guid: 6128d9fb0ce09164b9b7b703fb3c9112, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e604ee3d24a68c348b29ceea30c01256, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -25662,6 +25669,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 0}
   animator: {fileID: 0}
+  player: {fileID: 0}
+  Ridingone: {fileID: 0}
+  RidingTwo: {fileID: 0}
 --- !u!95 &1852739410
 Animator:
   serializedVersion: 5

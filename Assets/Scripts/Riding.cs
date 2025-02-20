@@ -31,7 +31,7 @@ public class Riding : MonoBehaviour
     public void RidingOneOn()
     {
         SpriteRenderer.sprite = Ridingone;
-        animator.SetBool("IsKitus",true );
+        animator.SetBool("IsKitsu",true );
         player.speed += 3f;
     }
     public void RidingTwoon()
