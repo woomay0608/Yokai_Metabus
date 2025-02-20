@@ -28,23 +28,27 @@ public class GameManager : MonoBehaviour
     //    Destroy(gameManager.gameObject);
     //    return;
     //}
+
+    [Header("# Color")]
     [SerializeField] private Slider RedSlider;
     float red;
     [SerializeField] private Slider GreenSlider;
     float green;
     [SerializeField] private Slider BlueSlider;
     float blue;
-
-   
-
     [SerializeField] private Image SaZin;
+
+
+    [Header("# Etc")]
 
     [SerializeField] private Player Player;
 
     [SerializeField] private ReaderBorad reader;
 
+    
     public static UiManager UiManager { get { return UiManager; } }
 
+    [Header("# Flappy")]
     //게임 최고 기록 저장할 곳
     private int FlapyBestScore = 0;
 
@@ -53,14 +57,16 @@ public class GameManager : MonoBehaviour
 
     private const string FlapyBestKey = "FlapyBestKey";
 
+    public bool IsRidingOne = false;
 
+    [Header("# Dice")]
     private int DiceBestScore = 0;
 
     public List<int> DiceList = new List<int>();
 
     public int DiceBestSc { get => DiceBestScore; set { DiceBestScore = value; } }
     private const string DiceBestKey = "DiceBestKey";
-
+    public bool IsRidingTwo = false;
 
 
 

@@ -36,6 +36,9 @@ public class FlapyUiManager : MonoBehaviour
     {
 
         FlapyGameManager.Scoreint += i;
+        if(FlapyGameManager.Scoreint >= 5)
+        GameManager.instance.IsRidingOne = true;
+
         Score.text = FlapyGameManager.Scoreint.ToString();
     }
 

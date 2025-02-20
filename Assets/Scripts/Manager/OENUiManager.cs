@@ -35,7 +35,10 @@ public class OENUiManager : MonoBehaviour
 
     public void SetScore(int i)
     {
+
         OENGameManager.Instace.Score += i;
+        if(OENGameManager.Instace.Score >= 5 )
+            GameManager.instance.IsRidingTwo = true;
 
         Score.text = OENGameManager.Instace.Score.ToString();
     }
