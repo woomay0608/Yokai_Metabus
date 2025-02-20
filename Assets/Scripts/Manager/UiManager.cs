@@ -61,23 +61,45 @@ public class UiManager : MonoBehaviour
     {
         StartCoroutine(showtext(strings));
     }
-    public void SetAct(int i)
+    public void SetAct()
     {
-        if(TalkObject != null && i == 1)
+        if(TalkObject != null)
             TalkObject.SetActive(true);
-        if(i == 2 && ColorObject != null)
-            ColorObject.SetActive(true);
-        if(i == 3 && Accessory != null)
-             Accessory.SetActive(true);
+
     }
-    public void SetFalse(int i)
+    public void SetFalse()
     {
-        if (TalkObject != null && i == 1)
+        if (TalkObject != null)
             TalkObject.SetActive(false);
-        if (i == 2 && ColorObject != null)
-            ColorObject.SetActive(false);
-        if (i == 3 && Accessory != null)
+    
+    }
+    public void SetColor()
+    {
+        if(ColorObject != null)
+        {
+            ColorObject.SetActive(true);
+        }
+    }
+    public void DownColor()
+    {
+        if(ColorObject != null)
+        {
+            ColorObject.SetActive(false );
+        }
+    }
+    public void SetAcce()
+    {
+        if (Accessory != null)
+        {
+            Accessory.SetActive(true);
+        }
+    }
+    public void DownAcce()
+    {
+        if (Accessory != null)
+        {
             Accessory.SetActive(false);
+        }
     }
 
 

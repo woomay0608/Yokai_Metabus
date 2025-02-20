@@ -15,11 +15,12 @@ public class friends : MonoBehaviour
 
     List<string> talk = new List<string>();
 
+    [SerializeField] private Button Yes;
+    [SerializeField] private Button No;
+
+
     public bool IsColliding = false;
-    private bool IsMini =false;
-    private bool IsColor = false;
-    private bool IsDice = false;
-    private bool IsAcce = false;
+
 
     UiManager uiManager;
     // Start is called before the first frame update
@@ -30,33 +31,27 @@ public class friends : MonoBehaviour
     }
     void Start()
     {
-        
+        No.onClick.AddListener(uiManager.SetFalse);
     }
     //
 
 
     private void Update()
     {
-        if(IsColliding && Input.GetKeyDown(KeyCode.F))
+        if (IsColliding && Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("nurum");
-            //uiManager.SetIma(sprite);
-            
-            
-            
             if (this.FriendId == 1)
             {
-                if(uiManager == null)
+                if (uiManager == null)
                 {
                     Debug.Log("널임");
                     uiManager = FindAnyObjectByType<UiManager>();
                 }
-                IsMini = true;
-                IsColor = false;
-                IsDice = false;
-                IsAcce = false;
+                Yes.onClick.RemoveAllListeners();
+
+                Yes.onClick.AddListener(Flappy);
                 uiManager.ImageChange(0);
-                uiManager.SetAct(1);
+                uiManager.SetAct();
                 uiManager.StartCorutine(talk);
             }
             if (this.FriendId == 2)
@@ -66,12 +61,10 @@ public class friends : MonoBehaviour
                     Debug.Log("널임");
                     uiManager = FindAnyObjectByType<UiManager>();
                 }
-                IsMini = false;
-                IsColor = true;
-                IsDice = false;
-                IsAcce = false;
+                Yes.onClick.RemoveAllListeners();
+                Yes.onClick.AddListener(uiManager.SetColor);
                 uiManager.ImageChange(1);
-                uiManager.SetAct(1);
+                uiManager.SetAct();
                 uiManager.StartCorutine(talk);
             }
             if (this.FriendId == 3)
@@ -81,12 +74,10 @@ public class friends : MonoBehaviour
                     Debug.Log("널임");
                     uiManager = FindAnyObjectByType<UiManager>();
                 }
-                IsMini = false;
-                IsColor = false;
-                IsDice = true;
-                IsAcce = false;
+                Yes.onClick.RemoveAllListeners();
+                Yes.onClick.AddListener(Dice);
                 uiManager.ImageChange(2);
-                uiManager.SetAct(1);
+                uiManager.SetAct();
                 uiManager.StartCorutine(talk);
             }
             if (this.FriendId == 4)
@@ -96,34 +87,25 @@ public class friends : MonoBehaviour
                     Debug.Log("널임");
                     uiManager = FindAnyObjectByType<UiManager>();
                 }
-                IsMini = false;
-                IsColor = false;
-                IsDice = false;
-                IsAcce = true;
+                Yes.onClick.RemoveAllListeners();
+                Yes.onClick.AddListener(uiManager.SetAcce);
                 uiManager.ImageChange(3);
-                uiManager.SetAct(1);
+                uiManager.SetAct();
                 uiManager.StartCorutine(talk);
             }
 
 
         }
-        if(IsColliding && IsMini && Input.GetKeyDown(KeyCode.E))
-        {
-            SceneManager.LoadScene("MiniGame");
-        }
-        if(IsColliding&& IsColor && Input.GetKeyDown(KeyCode.E))
-        {
-            uiManager.SetAct(2);
-        }
-        if (IsColliding && IsDice && Input.GetKeyDown(KeyCode.E))
-        {
-            SceneManager.LoadScene("MiniGame2");
-        }
-        if (IsColliding && IsAcce && Input.GetKeyDown(KeyCode.E))
-        {
-            uiManager.SetAct(3);
-        }
 
+    }
+
+    private void Flappy()
+    {
+        SceneManager.LoadScene("MiniGame");
+    }
+    private void Dice()
+    {
+        SceneManager.LoadScene("MiniGame2");
     }
 
     //충돌을 감지해주는 메소드
@@ -134,9 +116,9 @@ public class friends : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             talkText.gameObject.SetActive(false);
-            uiManager.SetFalse(1);
-            uiManager.SetFalse(2);
-            uiManager.SetFalse(3);
+            uiManager.SetFalse();
+            uiManager.DownAcce();
+            uiManager.DownColor();
             IsColliding = false;
         }
     }
@@ -150,42 +132,42 @@ public class friends : MonoBehaviour
 
             SetText();
         }
- 
+
     }
- 
+
 
 
     private void SetText()
     {
-        if(this.FriendId ==1)
+        if (this.FriendId == 1)
         {
             talk.Add("Hi");
             talk.Add("You want to play FlappyGame?");
-            talk.Add("if your answer is \"yes\" push \"E\"");
+           
         }
-        else if(this.FriendId == 2) 
+        else if (this.FriendId == 2)
         {
-            talk.RemoveRange(0,talk.Count);
+            talk.RemoveRange(0, talk.Count);
             talk.Add("so cold");
             talk.Add("You want to Change Your Color?");
-            talk.Add("if your answer is \"yes\" push \"E\"");
+            
         }
-        else if(this.FriendId == 3) 
+        else if (this.FriendId == 3)
         {
             talk.RemoveRange(0, talk.Count);
             talk.Add("Do you like Gamble?");
             talk.Add("if You want to play OddAndEvenDice");
-            talk.Add("push \"E\" and then take you to there");
+            
         }
         else if (this.FriendId == 4)
         {
             talk.RemoveRange(0, talk.Count);
             talk.Add("If you've found an accessory, talk to me");
             talk.Add("I can help you put it on");
-            talk.Add("push \"E\" I'll make you pretty");
+            
         }
     }
 
 
- 
+
 }
