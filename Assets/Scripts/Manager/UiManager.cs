@@ -10,24 +10,32 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI Talk;
-    
+    [Header("Talk Ui")]
+    [SerializeField] private TextMeshProUGUI Talk;  
     [SerializeField] private GameObject TalkObject;
+    [Header("Color")]
     [SerializeField] private GameObject ColorObject;
-    [SerializeField] private GameObject Accessory;
-
     [SerializeField] private Image Image;
 
+    [Header("Accessorry")]
+    [SerializeField] private GameObject Accessory;
     [SerializeField] private Button[] Buttons = new Button[6];
     [SerializeField] private Accessorry[] Accessors = new Accessorry[6];
     [SerializeField] private Image[] Accessorys = new Image[6];
     public bool[] IsFind = new bool[6];
+    [Header("Riding")]
+    [SerializeField] private Riding rind;
+    [SerializeField] private Image RidingOne;
+    [SerializeField] private Image RidingTwo;
+    [SerializeField] private Button RidingOnee;
+    [SerializeField] private Button RidingTwoe;
+
 
 
 
     public static UiManager Instace;
 
-    public friends[] friends = new friends[2];
+    public friends[] friends = new friends[5];
 
     private void Awake()
     {
@@ -55,6 +63,7 @@ public class UiManager : MonoBehaviour
 
     private void Start()
     {
+        ShowRiding();
     }
 
     public  void StartCorutine(List<string> strings)
@@ -131,6 +140,20 @@ public class UiManager : MonoBehaviour
                 Accessorys[i].gameObject.SetActive(true);
 
             }
+        }
+    }
+
+    public void ShowRiding()
+    {
+        if(GameManager.instance.IsRidingOne)
+        {
+            RidingOne.color = new Color(1f, 1f, 1f);
+            RidingOnee.onClick.AddListener(rind.RidingOneOn);
+        }
+        if (GameManager.instance.IsRidingTwo)
+        {
+            RidingTwo.color = new Color(1f, 1f, 1f);
+            RidingOnee.onClick.AddListener(rind.RidingTwoon);
         }
     }
 }

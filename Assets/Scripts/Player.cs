@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Pivot Pivots;
     [SerializeField] private Riding riding;
-    [Range(0f,10f)][SerializeField]private float speed = 5f;
+    [Range(0f,10f)][SerializeField]public float speed = 5f;
 
  
 
